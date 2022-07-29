@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Vector3 direction;
+
+    public float speed;
+
+    public System.Action destroyed;
+
+    private void Update()
     {
-        
+        transform.position += this.direction * this.speed * Time.deltaTime;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        destroyed.Invoke();
+        Destroy(gameObject);
     }
 }
