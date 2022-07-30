@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3113649501618337163}
   - component: {fileID: 3900250314943319882}
   - component: {fileID: 5845164252086737130}
-  - component: {fileID: 6884688524692794138}
+  - component: {fileID: -3295347779101932120}
   m_Layer: 7
   m_Name: Bullet1
   m_TagString: Untagged
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 1, z: 0}
   speed: 30
---- !u!50 &6884688524692794138
+--- !u!50 &-3295347779101932120
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

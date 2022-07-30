@@ -5,14 +5,14 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.GetComponent<Bullet>())
+        if (collider.gameObject.GetComponent<Bullet>())
         {
             Death();
         }
     }
-    protected virtual void Death()
+    public virtual void Death()
     {
         Destroy(gameObject);
     }

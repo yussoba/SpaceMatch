@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,13 +13,18 @@ public class Player : Entity
 
     public void Update()
     {
+        CheckInputs();
+    }
+
+    private void CheckInputs()
+    {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            Move(Vector3.left); 
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            Move(Vector3.right);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -34,15 +40,21 @@ public class Player : Entity
             Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.destroyed += BulletDestroyed;
             _bulletActive = true;
-        }
-        
+        } 
     }
+
     private void BulletDestroyed()
     {
         _bulletActive = false;
     }
-    protected override void Death()
+
+    public override void Death()
     {
         base.Death();
+    }
+
+    private void Move(Vector3 direction)
+    {
+        transform.position += direction * speed * Time.deltaTime;
     }
 }

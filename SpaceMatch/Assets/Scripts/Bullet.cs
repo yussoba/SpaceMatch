@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class Bullet : MonoBehaviour
 
     public float speed;
 
-    public System.Action destroyed;
+    public Action destroyed;
 
     private void Update()
     {
@@ -17,7 +18,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        destroyed.Invoke();
+        destroyed();
         Destroy(gameObject);
     }
 }
