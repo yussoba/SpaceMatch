@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776613982557003929, guid: 11299c171876c03498b64137854541a6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3655476
+      value: 0.7745619
       objectReference: {fileID: 0}
     - target: {fileID: 3776613982557003929, guid: 11299c171876c03498b64137854541a6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3655476
+      value: 0.7745619
       objectReference: {fileID: 0}
     - target: {fileID: 3776613982557003929, guid: 11299c171876c03498b64137854541a6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3655476
+      value: 0.7745619
       objectReference: {fileID: 0}
     - target: {fileID: 3776613982557003929, guid: 11299c171876c03498b64137854541a6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,6 +67,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5147741851082185849, guid: 11299c171876c03498b64137854541a6, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5147741851082185849, guid: 11299c171876c03498b64137854541a6, type: 3}
+      propertyPath: resetMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5147741851082185849, guid: 11299c171876c03498b64137854541a6, type: 3}
+      propertyPath: deathExplosionPrefab
+      value: 
+      objectReference: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
     - target: {fileID: 6267157672516820214, guid: 11299c171876c03498b64137854541a6, type: 3}
       propertyPath: animationSprites.Array.data[0]
       value: 
