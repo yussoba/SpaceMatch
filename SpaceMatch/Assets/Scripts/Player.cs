@@ -8,21 +8,18 @@ using UnityEngine.SceneManagement;
 public class Player : Entity
 {
     public TextMeshProUGUI livesUI;
-
     public Bullet bulletPrefab;
-
     public GameObject[] lifesUI;
-
     public float speed = 5.0f;
-
-    private bool _bulletActive;
-
     public int playerCurrentLives;
-
     public int playerStartLives = 3;
 
+    private GameManager _gameManager;
+    private bool _bulletActive;
+    
     public void Awake()
     {
+        _gameManager = FindObjectOfType<GameManager>();
         playerCurrentLives = playerStartLives;
         livesUI.text = playerCurrentLives.ToString();
     }
@@ -65,7 +62,6 @@ public class Player : Entity
 
     public override void Death()
     {
-
         if (playerCurrentLives > 0)
         {
             if (playerCurrentLives > 1)
@@ -78,7 +74,7 @@ public class Player : Entity
         if (playerCurrentLives <= 0)
         {
             base.Death();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            _gameManager.LoseLevel();
         }  
     }
 

@@ -7,7 +7,6 @@ public class Invader : Entity
 {
     public Color color;
     public SpriteRenderer sprite;
-    public AudioSource pointsSound;
     public Tuple<int, int> matrixPosition;
 
     private Action<Invader> _onDestroyed;
@@ -28,7 +27,6 @@ public class Invader : Entity
     
     public override void Death()
     {
-        pointsSound.Play();
         _onDestroyed(this);
         base.Death();
     }

@@ -6,11 +6,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Vector3 direction;
-
     public float speed;
-
     public Action destroyed;
-
     public bool enemyBullet;
 
     private void Update()
@@ -24,7 +21,6 @@ public class Bullet : MonoBehaviour
         {
             destroyed();
         }
-        
         Destroy(gameObject);
     }
 }

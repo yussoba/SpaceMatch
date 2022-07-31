@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class InvaderManager : MonoBehaviour
 {
     public Bullet enemyBulletPrefab;
-    public TextMeshProUGUI scoreText;
+    
     public Transform invadersParent;
     public int rows = 5;
     public int columns = 11;
@@ -16,16 +16,14 @@ public class InvaderManager : MonoBehaviour
     public float MoveSpeed = 5f;
     public float distanceBtw;
     public float enemyHeight;
-    public float enemyWidth;
-    
+    public float enemyWidth; 
     public List<Color> colors = new List<Color>();
 
-
+    private GameManager _gameManager;
     private Vector3 _direction = Vector2.right;
     private List<Invader> _invaders = new List<Invader>();
     private List<Invader> _destroyedInvaders = new List<Invader>();
-    private int destroyedInvaderscount = 0;
-    private int _scoreToAdd;
+    private int _destroyedInvadersCount = 0;
     private float _timeToShoot = 2f;
 
     private void Awake()
@@ -34,12 +32,12 @@ public class InvaderManager : MonoBehaviour
     }
     private void Start()
     {
+        _gameManager = FindObjectOfType<GameManager>();
         timerAttack = Time.deltaTime;
     }
     private void Update()
     {
         timerAttack += Time.deltaTime;
-        CheckScore();
         Move();
         EnemyAttack();
         CheckInvadersAmount();
@@ -55,7 +53,7 @@ public class InvaderManager : MonoBehaviour
 
     private void CheckInvaderNeighbours(Invader invader)
     {
-        destroyedInvaderscount++;
+        _destroyedInvadersCount++;
         _destroyedInvaders.Add(invader);
 
         foreach (var inv in _invaders.Where(inv => inv.color == invader.color))
@@ -65,7 +63,7 @@ public class InvaderManager : MonoBehaviour
                 inv.Death();
             }
         }
-        destroyedInvaderscount--;
+        _destroyedInvadersCount--;
         
     }
 
@@ -86,29 +84,6 @@ public class InvaderManager : MonoBehaviour
         return false;
     }
 
-    private void CheckScore()
-    {
-        if (destroyedInvaderscount == 0 && _destroyedInvaders.Count > 0)
-        {
-            CountScore(_destroyedInvaders.Count);
-            scoreText.text = (Int32.Parse(scoreText.text) + _scoreToAdd).ToString();
-            _scoreToAdd = 0;
-            _destroyedInvaders.Clear();
-        }
-    }
-    private void CountScore(int length)
-    {
-        FibonacciAddScore(10, 10, 1, length);
-    }
-
-    private void FibonacciAddScore(int value1, int value2, int counter, int length)
-    {
-        _scoreToAdd = (counter - 1) * value1;
-        if (counter <= length)
-        {
-            FibonacciAddScore(value2, value1 + value2, counter + 1, length);
-        }
-    }
     private void Move()
     {
         transform.position += _direction * MoveSpeed * Time.deltaTime;
@@ -184,8 +159,14 @@ public class InvaderManager : MonoBehaviour
     }
     private void CheckInvadersAmount()
     {
+        if (_destroyedInvadersCount == 0 && _destroyedInvaders.Count > 0)
+        {
+            _gameManager.CountScore(_destroyedInvaders.Count);
+            _destroyedInvaders.Clear();
+        }
         if (_invaders.All(invader => !invader.gameObject.activeInHierarchy))
         {
+            _gameManager.WinLevel();
             _invaders.Clear();
             foreach (Transform child in invadersParent)
             { 

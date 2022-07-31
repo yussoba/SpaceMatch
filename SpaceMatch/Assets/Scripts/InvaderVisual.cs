@@ -5,11 +5,9 @@ using UnityEngine;
 public class InvaderVisual : MonoBehaviour
 {
     public Sprite[] animationSprites;
-
     public float animationTime = 1.0f;
 
     private SpriteRenderer _spriteRenderer;
-
     private int _animationFrame;
 
     private void Awake()
@@ -30,7 +28,6 @@ public class InvaderVisual : MonoBehaviour
         {
             _animationFrame = 0;
         }
-
         _spriteRenderer.sprite = animationSprites[_animationFrame];
     }
 }

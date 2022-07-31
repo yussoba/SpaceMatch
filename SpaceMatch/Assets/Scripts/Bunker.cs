@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bunkers : MonoBehaviour
+public class Bunker : MonoBehaviour
 {
     public int bunkerStartLives = 5; 
-
     public GameObject[] bunkersPrefabs;
 
     private int _bunkerCurrentLives;
@@ -25,5 +24,10 @@ public class Bunkers : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
+
+    public void ResetBunkerLives()
+    {
+        _bunkerCurrentLives = bunkerStartLives;
     }
 }
