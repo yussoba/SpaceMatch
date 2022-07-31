@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8141836678909308496}
   - component: {fileID: 7032981968212971326}
   - component: {fileID: 6054432518266975768}
-  m_Layer: 0
+  - component: {fileID: 7265646980200342088}
+  m_Layer: 10
   m_Name: Bunker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977196891516890032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.46, y: -1.6816779, z: 0}
-  m_LocalScale: {x: 4.5495, y: 4.5495, z: 4.5495}
+  m_LocalPosition: {x: -5.46, y: -1.6817, z: 0}
+  m_LocalScale: {x: 10.830995, y: 10.830995, z: 10.830996}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -109,3 +110,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.625, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7265646980200342088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977196891516890032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb1d542130ccb943af8a30a2d741c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bunkerStartLives: 5
+  bunkersPrefabs: []

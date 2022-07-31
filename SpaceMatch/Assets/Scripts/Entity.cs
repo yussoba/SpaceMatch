@@ -14,6 +14,6 @@ public abstract class Entity : MonoBehaviour
     }
     public virtual void Death()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
 
     public Action destroyed;
 
+    public bool enemyBullet;
+
     private void Update()
     {
         transform.position += this.direction * this.speed * Time.deltaTime;
@@ -18,7 +20,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        destroyed();
+        if (!enemyBullet)
+        {
+            destroyed();
+        }
+        
         Destroy(gameObject);
     }
 }

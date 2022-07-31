@@ -2,15 +2,30 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
-    public float speed = 5.0f;
+    public TextMeshProUGUI livesUI;
 
     public Bullet bulletPrefab;
 
+    public GameObject[] lifesUI;
+
+    public float speed = 5.0f;
+
     private bool _bulletActive;
 
+    public int playerCurrentLives;
+
+    public int playerStartLives = 3;
+
+    public void Awake()
+    {
+        playerCurrentLives = playerStartLives;
+        livesUI.text = playerCurrentLives.ToString();
+    }
     public void Update()
     {
         CheckInputs();
@@ -50,7 +65,21 @@ public class Player : Entity
 
     public override void Death()
     {
-        base.Death();
+
+        if (playerCurrentLives > 0)
+        {
+            if (playerCurrentLives > 1)
+            {
+                lifesUI[playerCurrentLives - 2].SetActive(false);
+            }
+            playerCurrentLives = playerCurrentLives - 1;
+            livesUI.text = playerCurrentLives.ToString();
+        }
+        if (playerCurrentLives <= 0)
+        {
+            base.Death();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }  
     }
 
     private void Move(Vector3 direction)
