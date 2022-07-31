@@ -17,6 +17,7 @@ public class InvaderManager : MonoBehaviour
     public float distanceBtw;
     public float enemyHeight;
     public float enemyWidth;
+    
     public List<Color> colors = new List<Color>();
 
 
