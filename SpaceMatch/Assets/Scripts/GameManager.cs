@@ -38,8 +38,10 @@ public class GameManager : MonoBehaviour
             bunker.ResetBunkerLives();
         }
     }
-    public void LoseLevel()s
+    public void LoseLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    
 }
+
