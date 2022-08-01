@@ -7,10 +7,12 @@ public class Bunker : MonoBehaviour
     public int bunkerStartLives = 5; 
     public GameObject[] bunkersPrefabs;
 
+    private GameManager _gamemanager;
     private int _bunkerCurrentLives;
 
     private void Start()
     {
+        _gamemanager = FindObjectOfType<GameManager>();
         _bunkerCurrentLives = bunkerStartLives;
     }
 
@@ -24,10 +26,15 @@ public class Bunker : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        if (collider.gameObject.GetComponent<Invader>())
+        {
+            _gamemanager.LoseLevel();
+        }
     }
 
     public void ResetBunkerLives()
     {
         _bunkerCurrentLives = bunkerStartLives;
+        gameObject.SetActive(true);
     }
 }
